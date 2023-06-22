@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class HowToUseJPA {
     public static void main(String[] args) {
@@ -30,7 +31,30 @@ public class HowToUseJPA {
         emf.close(); //엔티티 메니저 팩토리 종료
     }
 
-    public static void logic(EntityManager entityManager){
-        //do something
+    public static void logic(EntityManager em){
+        String id = "id1";
+        Member member = new Member();
+        member.setId(id);
+        member.setUsername("이름");
+        member.setAge(10);
+
+        // 등록
+        em.persist(member);
+
+        // 수정
+        member.setAge(20);
+
+        // 한 건 조회
+        Member findMember = em.find(Member.class, id);
+        System.out.println(findMember.getId());
+
+        // 목록 조회
+        List<Member> members = em.createQuery("select m from Member m", Member.class)
+                .getResultList();
+
+        // 삭제
+        em.remove(member);
+
+
     }
 }

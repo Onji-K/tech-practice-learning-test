@@ -1,4 +1,4 @@
-package basic_usage;
+package jpa_test.basic_usage;
 
 import org.junit.jupiter.api.*;
 

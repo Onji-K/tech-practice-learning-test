@@ -1,4 +1,4 @@
-package basic_sample;
+package jpa_test.basic_sample;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -33,27 +33,27 @@ public class HowToUseJPA {
 
     public static void logic(EntityManager em){
         String id = "id1";
-        Member member = new Member();
-        member.setId(id);
-        member.setUsername("이름");
-        member.setAge(10);
+        User user = new User();
+        user.setId(id);
+        user.setUsername("이름");
+        user.setAge(10);
 
         // 등록
-        em.persist(member);
+        em.persist(user);
 
         // 수정
-        member.setAge(20);
+        user.setAge(20);
 
         // 한 건 조회
-        Member findMember = em.find(Member.class, id);
-        System.out.println(findMember.getId());
+        User findUser = em.find(User.class, id);
+        System.out.println(findUser.getId());
 
         // 목록 조회
-        List<Member> members = em.createQuery("select m from Member m", Member.class)
+        List<User> users = em.createQuery("select m from User m", User.class)
                 .getResultList();
 
         // 삭제
-        em.remove(member);
+        em.remove(user);
 
 
     }

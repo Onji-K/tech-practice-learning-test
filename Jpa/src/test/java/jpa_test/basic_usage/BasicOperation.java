@@ -1,11 +1,10 @@
-package basic_usage;
+package jpa_test.basic_usage;
 
-import basic_sample.Member;
+import jpa_test.basic_sample.User;
 import org.junit.jupiter.api.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.transaction.Transactional;
 
@@ -32,10 +31,10 @@ public class BasicOperation {
     void createEntityManager(){
         em = emf.createEntityManager();
         em.getTransaction().begin();
-        member = new Member();
-        member.setId(id);
-        member.setUsername(name);
-        member.setAge(age);
+        user = new User();
+        user.setId(id);
+        user.setUsername(name);
+        user.setAge(age);
 
     }
 
@@ -46,7 +45,7 @@ public class BasicOperation {
             em.close();
         }
     }
-    Member member;
+    User user;
     String id = "id1";
     String name = "이름";
     int age = 10;
@@ -54,29 +53,29 @@ public class BasicOperation {
 
     @Test
     void insert(){
-        em.persist(member);
-        Member findedMember = em.find(Member.class, id);
+        em.persist(user);
+        User findedUser = em.find(User.class, id);
 
-        assertSame(id, findedMember.getId());
-        assertSame(name, findedMember.getUsername());
-        assertSame(age, findedMember.getAge());
+        assertSame(id, findedUser.getId());
+        assertSame(name, findedUser.getUsername());
+        assertSame(age, findedUser.getAge());
 
     }
 
     @Test
     void update() {
-        em.persist(member);
-        member.setAge(20);
-        Member findedMember = em.find(Member.class, id);
-        assertSame(20, findedMember.getAge());
+        em.persist(user);
+        user.setAge(20);
+        User findedUser = em.find(User.class, id);
+        assertSame(20, findedUser.getAge());
     }
 
     @Test
     void delete() {
-        em.persist(member);
-        em.remove(member);
-        Member findedMember = em.find(Member.class, id);
-        assertNull(findedMember);
+        em.persist(user);
+        em.remove(user);
+        User findedUser = em.find(User.class, id);
+        assertNull(findedUser);
     }
 
 

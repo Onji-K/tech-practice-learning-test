@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
     <persistence-unit name="h2database">
-        <class>basic_sample.Member</class>
+        <class>jpa_test.basic_sample.User</class>
+        <class>jpa_test.relation_mapping.many_to_one.Member</class>
+        <class>jpa_test.relation_mapping.many_to_one.Team</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>

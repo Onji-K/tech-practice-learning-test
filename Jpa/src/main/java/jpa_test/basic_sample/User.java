@@ -1,10 +1,10 @@
-package basic_sample;
+package jpa_test.basic_sample;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name="MEMBER")
-public class Member {
+@Table(name="USER")
+public class User {
 
     @Id
     @Column(name = "ID")

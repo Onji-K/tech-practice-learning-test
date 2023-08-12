@@ -49,7 +49,7 @@ public class HowToUseJPA {
         System.out.println(findUser.getId());
 
         // 목록 조회
-        List<User> users = em.createQuery("select m from User m", User.class)
+        List<User> users = em.createQuery("select m from Principal m", User.class)
                 .getResultList();
 
         // 삭제

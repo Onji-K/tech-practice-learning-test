@@ -12,6 +12,7 @@ public class JpaTestSuper {
 
     @BeforeAll
     static void beforeAll() {
+
         emf = Persistence.createEntityManagerFactory("h2database");
     }
 

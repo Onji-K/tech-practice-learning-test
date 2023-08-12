@@ -4,9 +4,13 @@
         <class>jpa_test.basic_sample.User</class>
         <class>jpa_test.relation_mapping.many_to_one.Member</class>
         <class>jpa_test.relation_mapping.many_to_one.Team</class>
+        <class>jpa_test.relation_mapping.inheritance_mapping.Item</class>
+        <class>jpa_test.relation_mapping.inheritance_mapping.Book</class>
+        <class>jpa_test.relation_mapping.many_to_many.Role</class>
+        <class>jpa_test.relation_mapping.many_to_many.Principal</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
-            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.principal" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />

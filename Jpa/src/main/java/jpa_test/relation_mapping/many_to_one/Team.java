@@ -14,7 +14,7 @@ public class Team {
     @Column(name = "NAME")
     private String name;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Member> members = new ArrayList<>();
 
     protected Team() {
@@ -25,6 +25,11 @@ public class Team {
         this.name = name;
     }
 
+    public Team(String id, String name, List<Member> members) {
+        this.id = id;
+        this.name = name;
+        this.members = members;
+    }
 
     public String getId() {
         return id;

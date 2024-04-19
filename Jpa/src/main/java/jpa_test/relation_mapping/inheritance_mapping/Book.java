@@ -6,7 +6,17 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("Book")
 public class Book extends Item{
-    public Book(String name) {
+    private String author;
+
+    public Book() {
+    }
+
+    public Book(String name, String author) {
         super(name);
+        this.author = author;
+    }
+
+    public String getAuthor() {
+        return author;
     }
 }

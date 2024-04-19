@@ -31,6 +31,9 @@ public class Main {
                 .subscribeOn(Schedulers.single())
                 .parallel()
                 .runOn(Schedulers.boundedElastic())
+                .doOnNext(data -> printWithThread("onNext: " + data))
+                .flatMap(data -> Flux.just(String.format("Processed<<%s>>", data)))
+                .doOnNext(data -> printWithThread("onProcessedNext: " + data))
                 .subscribe(
                 data -> printWithThread("Received: " + data),
                 error -> printWithThread("Error: " + error),
@@ -46,6 +49,6 @@ public class Main {
     }
 
     public static void printWithThread(String data){
-        System.out.printf("\n[%s] %s\n",Thread.currentThread().getName(),data);
+        System.out.printf("[%s] %s\n",Thread.currentThread().getName(),data);
     }
 }
